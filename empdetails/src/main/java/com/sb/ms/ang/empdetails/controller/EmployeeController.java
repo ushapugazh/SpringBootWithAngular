@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sb.ms.ang.empdetails.model.Employee;
-import com.sb.ms.ang.empdetails.service.EmployeeService;
+import com.sb.ms.ang.empdetails.service.ServiceInterface;
 
 
 
@@ -26,7 +26,14 @@ import com.sb.ms.ang.empdetails.service.EmployeeService;
 public class EmployeeController {
 	
 	@Autowired
-	private EmployeeService empService;
+	private ServiceInterface empService;
+	public EmployeeController() {
+		
+	}
+	
+	public EmployeeController(ServiceInterface empService){
+		this.empService =empService;
+	}
 
     @GetMapping
     public List<Employee> findAll() {
